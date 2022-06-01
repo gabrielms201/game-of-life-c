@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#define TEST_MODE
+const int g_ALIVE = 1;
+const int g_DEAD = 0;
 
 void fillMatrix(int rows, int columns, int** matrix)
 {
@@ -20,16 +22,16 @@ void fillMatrix(int rows, int columns, int** matrix)
         printf("\tColuna: ");
         scanf("%d", &col);
         printf("\n");
-        matrix[row][col] = 1;
+        matrix[row][col] = g_ALIVE;
     }
 }
 
 void mockMatrix(int** matrix)
 {
-    matrix[0][1] = 1;
-    matrix[1][0] = 1;
-    matrix[2][1] = 1;
-    matrix[3][1] = 1;
+    matrix[0][1] = g_ALIVE;
+    matrix[1][0] = g_ALIVE;
+    matrix[2][1] = g_ALIVE;
+    matrix[3][1] = g_ALIVE;
 }
 
 void printMatrix(int rows, int columns, int **matrix)
@@ -49,7 +51,7 @@ void printMatrix(int rows, int columns, int **matrix)
         printf("|");
         for (j = 0; j < columns; j++)
         {
-            printf("%s|", matrix[i][j] == 0 ? "   " : "<X>");
+            printf("%s|", matrix[i][j] == g_DEAD ? "   " : "<X>");
             //printf("%d ", matrix[i][j]);
         }
         printf("\n");
@@ -71,7 +73,7 @@ int **generateMatrix(int rows, int columns)
         matrix[i] = (int *) calloc(columns, sizeof(int));
         for (int j = 0; j < columns; j++)
         {
-            matrix[i][j] = 0;
+            matrix[i][j] = g_DEAD;
         }
     }
     return matrix;
