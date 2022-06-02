@@ -146,8 +146,8 @@ void readRowsAndColumns(int* rows, int* columns)
 
 void gameOfLife()
 {
-	int rows = 100;
-	int columns = 100;
+	int rows = 11;
+	int columns = 11;
 	int end = 0;
 
 #ifndef TEST_MODE
@@ -178,13 +178,15 @@ void gameOfLife()
 		}
 		printMatrix(rows, columns, newMatrix);
 		printf("Pressione qualquer tecla para continuar, ou digite (0) para parar: \n");
-		char* choice = "";
+		char choice[30];
 		scanf("%s*c", choice);
+		freeMatrix(columns, matrix);
 		matrix = newMatrix;
 		if (strcmp(choice, "0") == 0)
 		{
 			end = 1;
 		}
+		getchar();
 		
 	}
 	freeMatrix(columns, matrix);
